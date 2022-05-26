@@ -18,9 +18,7 @@ package io.pivotal.literx;
 
 import java.time.Duration;
 import java.util.function.Supplier;
-
 import io.pivotal.literx.domain.User;
-import org.assertj.core.api.Assertions;
 import reactor.core.publisher.Flux;
 import reactor.test.StepVerifier;
 
@@ -57,8 +55,8 @@ public class Part03StepVerifier {
 	// and another one with "jpinkman" then completes successfully.
 	void expectSkylerJesseComplete(Flux<User> flux) {
 		StepVerifier.create(flux)
-				.assertNext(u -> assertThat(u.getUsername()).isEqualTo("swhite"))
-				.assertNext(u -> assertThat(u.getUsername()).isEqualTo("jpinkman"))
+				.assertNext(users -> assertThat(users.getUsername()).isEqualTo("swhite"))
+				.assertNext(users -> assertThat(users.getUsername()).isEqualTo("jpinkman"))
 				.verifyComplete();
 
 	}
