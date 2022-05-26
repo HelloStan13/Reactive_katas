@@ -56,7 +56,7 @@ public class Part03StepVerifier {
 	void expectSkylerJesseComplete(Flux<User> flux) {
 		StepVerifier.create(flux)
 				.assertNext(users -> assertThat(users.getUsername()).isEqualTo("swhite"))
-				.assertNext(users -> assertThat(users.getUsername()).isEqualTo("jpinkman"))
+				.assertNext(users -> assertThat(users.getUsername()).isEqualToIgnoringCase("jpinkman"))
 				.verifyComplete();
 
 	}

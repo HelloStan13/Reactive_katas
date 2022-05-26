@@ -1,5 +1,4 @@
 package io.pivotal.literx;
-
 import io.pivotal.literx.domain.User;
 import reactor.core.publisher.Flux;
 import reactor.core.publisher.Mono;
