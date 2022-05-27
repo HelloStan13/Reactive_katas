@@ -28,13 +28,11 @@ public class Part06Request {
 
 	// TODO Create a StepVerifier that initially requests 1 value and expects User.SKYLER then requests another value and expects User.JESSE then stops verifying by cancelling the source
 	StepVerifier requestOneExpectSkylerThenRequestOneExpectJesse(Flux<User> flux) {
-		return StepVerifier
-				.create(flux)
-				.expectSubscription()
+		return StepVerifier.create(flux)
 				.thenRequest(1)
-				.expectNext(User.SKYLER )
+				.expectNext(User.SKYLER)
 				.thenRequest(1)
-				.expectNext(User.JESSE )
+				.expectNext(User.JESSE)
 				.thenCancel();
 	}
 
@@ -49,13 +47,13 @@ public class Part06Request {
 
 //========================================================================================
 
-	// TODO Return a Flux with all users stored in the repository that prints "Starring:" on subscribe, "firstname lastname" for all values and "The end!" on complete
+	// TODO Return a Flux with all users stored in the repository that prints "Starring:" at first, "firstname lastname" for all values and "The end!" on complete
 	Flux<User> fluxWithDoOnPrintln() {
 		return repository
 				.findAll()
-				.doOnSubscribe(s-> System.out.print("Starting:"))
-				.doOnNext(users-> System.out.print(users.getFirstname() + " " + users.getLastname()))
-				.doOnComplete(()-> System.out.print("The End!"));
+				.doOnSubscribe(s -> System.out.println("Starring:"))
+				.doOnNext(p -> System.out.println(p.getFirstname() + " " + p.getLastname()))
+				.doOnComplete(() -> System.out.println("The end!"));
 	}
 
 }

@@ -41,7 +41,7 @@ public class Part07Errors {
 	// TODO Return a Flux<User> containing User.SAUL and User.JESSE when an error occurs in the input Flux, else do not change the input Flux.
 	Flux<User> betterCallSaulAndJesseForBogusFlux(Flux<User> flux) {
 		return flux
-				.onErrorResume( e -> Flux.just(User.SAUL, User.JESSE));
+				.onErrorResume( users -> Flux.just(User.SAUL, User.JESSE));
 	}
 
 //========================================================================================
