@@ -69,19 +69,19 @@ public class Part06RequestTest {
 		Flux<User> flux = workshop.fluxWithLog();
 
 		StepVerifier.create(flux, 0)
-		            .thenRequest(1)
-		            .expectNextMatches(u -> true)
-		            .thenRequest(1)
-		            .expectNextMatches(u -> true)
-		            .thenRequest(2)
-		            .expectNextMatches(u -> true)
-		            .expectNextMatches(u -> true)
-		            .verifyComplete();
+				.thenRequest(1)
+				.expectNextMatches(u -> true)
+				.thenRequest(1)
+				.expectNextMatches(u -> true)
+				.thenRequest(2)
+				.expectNextMatches(u -> true)
+				.expectNextMatches(u -> true)
+				.verifyComplete();
 
-  		List<String> log = Arrays.stream(logConsole.toString().split(System.lineSeparator()))
-							   .filter(s -> s.contains("] INFO"))
-							   .map(s -> s.replaceAll(".*] INFO .* - ", ""))
-							   .collect(Collectors.toList());
+		List<String> log = Arrays.stream(logConsole.toString().split(System.lineSeparator()))
+				.filter(s -> s.contains("] INFO"))
+				.map(s -> s.replaceAll(".*] INFO .* - ", ""))
+				.collect(Collectors.toList());
 
 		assertThat(log)
 				.containsExactly("onSubscribe(FluxZip.ZipCoordinator)"
@@ -106,8 +106,8 @@ public class Part06RequestTest {
 		System.setOut(new PrintStream(logConsole));
 
 		StepVerifier.create(flux)
-		            .expectNextCount(4)
-		            .verifyComplete();
+				.expectNextCount(4)
+				.verifyComplete();
 
 		String[] log = logConsole.toString().split(System.lineSeparator());
 
