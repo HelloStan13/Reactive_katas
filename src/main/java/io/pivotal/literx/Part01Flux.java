@@ -9,6 +9,7 @@ import java.util.Arrays;
  *
  * @author Sebastien Deleuze
  * @see <a href="https://projectreactor.io/docs/core/release/api/reactor/core/publisher/Flux.html">Flux Javadoc</a>
+ * SOLVED -->ADRYAN YNFANTE
  */
 public class Part01Flux {
 
